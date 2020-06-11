@@ -13,5 +13,5 @@ jobs:
         secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         account_id: ${{ secrets.AWS_ACCOUNT_ID }}
         region: eu-west-1
-        repo: 251278640225.dkr.ecr.eu-west-1.amazonaws.com/podplayadmin-test-dev
+        repo: podplayadmin-test-dev
         tags: latest,${{ github.sha }}
