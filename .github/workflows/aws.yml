@@ -83,7 +83,7 @@ jobs:
         THEOUT: ${{ steps.task-def.outputs.task-definition }}
       run: |
         echo $THEOUT
-
+        cat $THEOUT
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
