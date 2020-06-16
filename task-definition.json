@@ -1,5 +1,6 @@
 {
-  "taskDefinitionArn": "arn:aws:ecs:eu-west-1:251278640225:task-definition/podplayadmin-test-dev:1",
+  "family": "podplayadmin-test-dev",
+  "networkMode": "awsvpc",
   "containerDefinitions": [
     {
       "name": "podplayadmin-web-dev",
@@ -31,44 +32,8 @@
       }
     }
   ],
-  "family": "podplayadmin-test-dev",
   "taskRoleArn": "arn:aws:iam::251278640225:role/podplayadmin-test-dev-ecs-task-role",
   "executionRoleArn": "arn:aws:iam::251278640225:role/podplayadmin-test-dev-ecs-execution-role",
-  "networkMode": "awsvpc",
-  "revision": 1,
-  "volumes": [],
-  "status": "ACTIVE",
-  "requiresAttributes": [
-    {
-      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
-    },
-    {
-      "name": "ecs.capability.execution-role-awslogs"
-    },
-    {
-      "name": "com.amazonaws.ecs.capability.ecr-auth"
-    },
-    {
-      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
-    },
-    {
-      "name": "com.amazonaws.ecs.capability.task-iam-role"
-    },
-    {
-      "name": "ecs.capability.execution-role-ecr-pull"
-    },
-    {
-      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
-    },
-    {
-      "name": "ecs.capability.task-eni"
-    }
-  ],
-  "placementConstraints": [],
-  "compatibilities": [
-    "EC2",
-    "FARGATE"
-  ],
   "requiresCompatibilities": [
     "FARGATE"
   ],
