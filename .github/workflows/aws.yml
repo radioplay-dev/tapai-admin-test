@@ -81,7 +81,7 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: podplayadmin-test-dev
+#        service: podplayadmin-test-dev
         cluster: podplayadmin-test-dev
         wait-for-service-stability: true
 #    - name: Slack if success
