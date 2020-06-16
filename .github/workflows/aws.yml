@@ -36,6 +36,14 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+#    - name: Notify slack start
+#      id: slack-start
+#      uses: mahlstrom/actions2slack@v6
+#      with:
+#        github-run-id: $GITHUB_RUN_ID
+#        status: 'STARTED'
+#        slack-token: ${{ secrets.SLACK_TOKEN }}
+#        slack-channel: 'bottest'
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -73,6 +81,24 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: podplayadmin-web-dev
-        cluster: podplayadmin-web-dev
+        service: podplayadmin-test-dev
+        cluster: podplayadmin-test-dev
         wait-for-service-stability: true
+#    - name: Slack if success
+#      id: slack-success
+#      uses: mahlstrom/actions2slack@v6
+#      with:
+#        github-run-id: $GITHUB_RUN_ID
+#        status: 'SUCCEEDED'
+#        slack-token: ${{ secrets.SLACK_TOKEN }}
+#        slack-channel: 'bottest'
+#
+#    - name: Slack if failed
+#      if: ${{ failure() }}
+#      id: slack-failed
+#      uses: mahlstrom/actions2slack@v6
+#      with:
+#        github-run-id: $GITHUB_RUN_ID
+#        status: 'FAILED'
+#        slack-token: ${{ secrets.SLACK_TOKEN }}
+#        slack-channel: 'bottest'
