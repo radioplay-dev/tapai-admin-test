@@ -77,6 +77,13 @@ jobs:
         container-name: podplayadmin-test-dev
         image: ${{ steps.build-image.outputs.image }}
 
+    - name: Print result
+      id: ress
+      env:
+        THEOUT: ${{ steps.task-def.outputs.task-definition }}
+      run: |
+        echo $THEOUT
+
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
