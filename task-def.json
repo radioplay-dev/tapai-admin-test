@@ -3,8 +3,8 @@
   "networkMode": "awsvpc",
   "containerDefinitions": [
     {
-      "name": "podplayadmin-web-dev",
-      "image": "251278640225.dkr.ecr.eu-west-1.amazonaws.com/podplayadmin-web-dev:latest",
+      "name": "podplayadmin-test-dev",
+      "image": "251278640225.dkr.ecr.eu-west-1.amazonaws.com/podplayadmin-test-dev:latest",
       "portMappings": [
         {
           "containerPort": 3000,
