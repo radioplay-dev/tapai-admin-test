@@ -33,6 +33,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: env
+      env:
+        ENV_NAME: podplayadmin-dev-test
+      run: |
+        echo "::set-output name=TAG_NAME::$ENV_NAME"
     - name: Checkout
       uses: actions/checkout@v2
 
@@ -59,7 +64,7 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: podplayadmin-test-dev
+        ECR_REPOSITORY: ${{ steps.env.outputs.ENV_NAME }}
         IMAGE_TAG: ${{ github.sha }}
       run: |
         # Build a docker container and
@@ -74,7 +79,7 @@ jobs:
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
         task-definition: task-definition.json
-        container-name: podplayadmin-test-dev
+        container-name: ${{ steps.env.outputs.ENV_NAME }}
         image: ${{ steps.build-image.outputs.image }}
 
     - name: Print result
@@ -88,8 +93,8 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: podplayadmin-test-dev-service
-        cluster: podplayadmin-test-dev
+        service: ${{ steps.env.outputs.ENV_NAME }}-service
+        cluster: ${{ steps.env.outputs.ENV_NAME }}
         wait-for-service-stability: true
     - name: Slack if success
       id: slack-success
