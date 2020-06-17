@@ -15,10 +15,11 @@ jobs:
         #
         env:
           NAME: podplayadmin-test-dev
+          IMAGE_TAG: ${{ github.sha }}
         run: |
           echo "::set-env name=ECR_REPOSITORY::$NAME"
           echo "::set-output name=ECR_REPOSITORY::$NAME"
-          echo "::set-env name=IMAGE_TAG=${{ github.sha }}"
+          echo "::set-env name=IMAGE_TAG=$IMAGE_TAG"
 
       - name: Checkout
         uses: actions/checkout@v2
