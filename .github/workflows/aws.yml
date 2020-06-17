@@ -13,8 +13,8 @@ jobs:
       env:
         NAME: podplayadmin-test-dev
       run: |
-        echo '::set-env name=ECR_REPOSITORY::$NAME'
-        echo '::set-output name=ECR_REPOSITORY::$NAME'
+        echo "::set-env name=ECR_REPOSITORY::$NAME"
+        echo "::set-output name=ECR_REPOSITORY::$NAME"
 
     - name: Checkout
       uses: actions/checkout@v2
