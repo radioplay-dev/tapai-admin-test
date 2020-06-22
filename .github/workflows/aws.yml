@@ -39,7 +39,7 @@ jobs:
 
       - name: Try to upload to S3
         run: |
-          aws s3 cp giphy.webp s3://podplayadmin-web-dev/_next/giphy.webp
+          aws s3 cp giphy.gif s3://podplayadmin-web-dev/_next/
 
 
       - name: Login to Amazon ECR
